@@ -1,0 +1,17 @@
+
+.input-wrap {
+	min-height: 84px;
+	min-width: 200px;
+	padding: 10px 10px 43px;
+	background-color: #fff;
+	position: relative;
+}
+
+.textarea {
+    border: 0;
+    resize: none;
+    outline: 0;
+    z-index: 3;
+    color: #333;
+    overflow: hidden;
+}

@@ -1,0 +1,141 @@
+<html>
+<head>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
+   	<link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
+   	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+     <style type="text/css">
+   /*Contact sectiom*/
+.content-header{
+  font-family: 'Oleo Script', cursive;
+  color:#fcc500;
+  font-size: 60px;
+}
+
+.section-content{
+  text-align: center; 
+
+}
+select {
+color : initial !important;
+}
+#contact{
+  font-family: 'Teko', sans-serif;
+  padding-top: 60px;
+  width: 100%;
+  /* width: 100vw;*/
+  height: 1000px; /* change it to your value depending on context*/
+  background: #3a6186; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color : #fff;    
+}
+.contact-section{
+  padding-top: 40px;
+}
+.form-group{
+  margin-top: 10px;
+}
+label{
+  font-size: 1.3em;
+  line-height: 1em;
+  font-weight: normal;
+}
+.form-control{
+  font-size: 1.3em;
+  color: #080808;
+}
+textarea.form-control {
+    height: 300px;
+	width:  500px;
+	resize: none;/*disables the resize function*/
+   /* margin-top: px;*/
+}
+
+.submit{
+  font-size: 1.1em;
+  margin-top: 3em;
+  margin-left: -10em;
+  width: 150px;
+  background-color: transparent;
+  color: #fff;
+
+}
+</style>
+
+ <style type="text/css">
+.col-md-6{
+  margin-left: 1%;
+  float:left;
+  width: 48%;
+}
+ </style>
+</head>
+  <body>
+  <section id="contact">
+			<div class="section-content">
+				<h1 class="section-header"> <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Translate</span> your text</h1>
+				<h2>Write and click <b>TRANSLATE</b></h2>
+			</div>
+			<div class="contact-section">
+			<div class="container">
+				<form>	
+					<div class="col-md-6">
+					  <div class="form-group"> 
+					    <label for ="from"> From</label>
+			  				
+					     <select name="from">
+								<option value="en">English</option>
+								<option value="cz">Chinese</option>
+								<option value="sk">Others</option>
+						</select> 
+				     </div>
+			  		 <div class="form-group">
+			  				
+			  			 	<textarea  class="form-control" id="src_text" placeholder="Enter Your Text"></textarea>
+			  			</div>
+			  		</div>
+			  		<div class="col-md-6" id="div1">
+			  		     <div class="form-group"> 
+					    <label for ="from"> To</label>
+			  				
+					    <select name="from">
+							<option value="en">Chinese</option>
+										<option value="cz">English</option>
+											<option value="sk">Others</option>
+						</select> 
+						</div>
+			  			<div class="form-group" id="div2">
+			  			
+			  			 	<textarea  class="form-control" id="translated" placeholder="Translated text will be here"></textarea>
+			  			</div>
+			  		<div>
+
+			  				<button type="button" class="btn btn-default submit" onclick="baidutranslate()"><i class="fa fa-globe" aria-hidden="true"></i>   translate</button>
+			  			</div>
+			  			
+					</div>
+				</form>
+				</div></div>
+		</section>
+  </body>
+
+ 
+ <script type="text/javascript">
+   function baidutranslate()
+   {
+      $.post('/translate',
+        {'src_text': $("#src_text").val()},
+        function(data, status){
+          if(status == "success")
+            $("#translated").html(data)
+        }
+        );
+   }
+</script>
+</html>
